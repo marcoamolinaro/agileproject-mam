@@ -1,5 +1,6 @@
 package com.scmitltda.ppmtool.web;
 
+import javax.swing.text.StyledEditorKit.ItalicAction;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,10 @@ public class ProjectController {
 		Project project = projectService.findByProjectIdentifier(projectId);
 		
 		return new ResponseEntity<Project>(project, HttpStatus.OK); 
+	}
+	
+	@GetMapping("/all")
+	public Iterable<Project> getAllProjects() {
+		return projectService.findAllProjects();
 	}
 }

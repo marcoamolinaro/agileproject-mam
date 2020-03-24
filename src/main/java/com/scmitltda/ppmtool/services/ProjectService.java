@@ -23,7 +23,6 @@ public class ProjectService {
 		}
 	}
 	
-	@SuppressWarnings("null")
 	public Project findByProjectIdentifier(String projectId) {
 		
 		Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
@@ -32,5 +31,9 @@ public class ProjectService {
 			throw new ProjectIdException("Project ID '" + projectId + "' does not exist.");	
 		}
 		return project;
+	}
+	
+	public Iterable<Project> findAllProjects() {	
+		return projectRepository.findAll();
 	}
 }

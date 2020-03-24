@@ -9,4 +9,7 @@ import com.scmitltda.ppmtool.domain.Project;
 public interface ProjectRepository extends CrudRepository<Project, Long> {
 	
 	Project findByProjectIdentifier(String projectId);
+	
+	@Override
+	Iterable<Project> findAll();
 }
