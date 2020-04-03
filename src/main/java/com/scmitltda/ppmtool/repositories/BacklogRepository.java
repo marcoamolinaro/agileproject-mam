@@ -7,5 +7,5 @@ import com.scmitltda.ppmtool.domain.Backlog;
 
 @Repository
 public interface BacklogRepository extends CrudRepository<Backlog, Long> {
-
+	Backlog findByProjectIndentifier(String projectIdentifier);
 }
