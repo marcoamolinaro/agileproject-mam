@@ -10,4 +10,6 @@ import com.scmitltda.ppmtool.domain.ProjectTask;
 @Repository
 public interface ProjectTaskReposity extends CrudRepository<ProjectTask, Long>{
 	List<ProjectTask> findByProjectIdentifierOrderByPriority(String id);
+	
+	ProjectTask findByProjectSequence(String sequence);
 }

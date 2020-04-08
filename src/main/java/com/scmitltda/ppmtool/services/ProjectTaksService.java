@@ -72,4 +72,9 @@ public class ProjectTaksService {
 		return projectTasks;
 	}
 	
+	public ProjectTask findPTByProjectSequence(String backlog_id, String pt_id) {
+		// make sure we are searching on the right backlog
+		
+		return projectTaskReposity.findByProjectSequence(pt_id);
+	}
 }
