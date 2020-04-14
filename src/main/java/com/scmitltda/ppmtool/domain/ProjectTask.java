@@ -3,7 +3,6 @@ package com.scmitltda.ppmtool.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,8 +27,8 @@ public class ProjectTask implements Serializable{
 	private Long id;
 	@Column(updatable = false, unique = true)
 	private String projectSequence;
-	@NotBlank(message = "Please include a project sumary")
-	private String sumary;
+	@NotBlank(message = "Please include a project summary")
+	private String summary;
 	private String acceptanceCriteria;
 	private String status;
 	private Integer priority;
@@ -76,12 +75,12 @@ public class ProjectTask implements Serializable{
 		this.projectSequence = projectSequence;
 	}
 
-	public String getSumary() {
-		return sumary;
+	public String getSummary() {
+		return summary;
 	}
 
-	public void setSumary(String sumary) {
-		this.sumary = sumary;
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	public String getAcceptanceCriteria() {
@@ -150,7 +149,7 @@ public class ProjectTask implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ProjectTask [id=" + id + ", projectSequence=" + projectSequence + ", sumary=" + sumary
+		return "ProjectTask [id=" + id + ", projectSequence=" + projectSequence + ", summary=" + summary
 				+ ", acceptanceCriteria=" + acceptanceCriteria + ", status=" + status + ", priority=" + priority
 				+ ", dueDate=" + dueDate + ", projectIdentifier=" + projectIdentifier + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + "]";
