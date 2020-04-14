@@ -45,7 +45,7 @@ public class ProjectTaksService {
 			
 			// Initial priority when priority = null
 			Integer projectTaskPriority = projectTask.getPriority();
-			if (projectTaskPriority == null) {
+			if (projectTaskPriority == null || projectTaskPriority == 0) {
 				projectTask.setPriority(LOW_PRIORITY);
 			}
 			
