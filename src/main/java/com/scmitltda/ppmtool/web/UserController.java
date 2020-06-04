@@ -1,5 +1,7 @@
 package com.scmitltda.ppmtool.web;
 
+import static com.scmitltda.ppmtool.security.SecurityConstants.TOKEN_PREFIX;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.scmitltda.ppmtool.domain.User;
 import com.scmitltda.ppmtool.payload.JWTLoginSuccessResponse;
 import com.scmitltda.ppmtool.payload.LoginRequest;
-import com.scmitltda.ppmtool.security.JWTTokenProvider;
-import com.scmitltda.ppmtool.security.SecurityConstants;
+import com.scmitltda.ppmtool.security.JwtTokenProvider;
 import com.scmitltda.ppmtool.services.MapValidationErrorService;
 import com.scmitltda.ppmtool.services.UserService;
 import com.scmitltda.ppmtool.validator.UserValidator;
@@ -38,14 +39,14 @@ public class UserController {
 	private UserValidator userValidator;
 	
 	@Autowired
-	private JWTTokenProvider jwtTokenProvider;
+	private JwtTokenProvider jwtTokenProvider;
 	
 	@Autowired
 	private AuthenticationManager authManager;
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticationUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result) {
-		
+				
 		ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationService(result);
 		
 		if (errorMap != null) return errorMap;
@@ -56,10 +57,10 @@ public class UserController {
 						loginRequest.getPassword()
 					)
 			); 
-		
+				
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
-		String jwt = SecurityConstants.TOKEN_PREFIX + jwtTokenProvider.generateToke(authentication);
+		String jwt = TOKEN_PREFIX + jwtTokenProvider.generateToke(authentication);
 		
 		return ResponseEntity.ok(new JWTLoginSuccessResponse(true, jwt));
 	}
