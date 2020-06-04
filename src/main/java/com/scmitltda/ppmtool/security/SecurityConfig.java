@@ -15,6 +15,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.scmitltda.ppmtool.services.CustomUserDetailsService;
 
+import static com.scmitltda.ppmtool.security.SecurityConstants.SIGN_UP_URLS;
+import static com.scmitltda.ppmtool.security.SecurityConstants.H2_URL;;
+
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -65,8 +69,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-                .antMatchers(SecurityConstants.SIGN_UP_URLS).permitAll()
-                .antMatchers(SecurityConstants.H2_URL).permitAll()
+                .antMatchers(SIGN_UP_URLS).permitAll()
+                .antMatchers(H2_URL).permitAll()
                 .anyRequest().authenticated();
     }
 	

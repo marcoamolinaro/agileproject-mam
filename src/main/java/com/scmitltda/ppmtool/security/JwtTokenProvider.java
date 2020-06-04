@@ -31,15 +31,15 @@ public class JwtTokenProvider {
 		
 		String userId = Long.toString(user.getId());
 		
-		Map<String, Object> mapClaims = new HashMap<String, Object>();
-		mapClaims.put("id", (Long.toString(user.getId())));
-		mapClaims.put("username", user.getUsername());
-		mapClaims.put("fullname", user.getFullName());
+		Map<String, Object> claims = new HashMap<>();
+		claims.put("id", (Long.toString(user.getId())));
+		claims.put("username", user.getUsername());
+		claims.put("fullname", user.getFullName());
 		
 		
 		return Jwts.builder()
 				.setSubject(userId)
-				.setClaims(mapClaims)
+				.setClaims(claims)
 				.setIssuedAt(now)
 				.setExpiration(expiryDate)
 				.signWith(SignatureAlgorithm.HS512, SECRET)
