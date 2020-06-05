@@ -135,7 +135,7 @@ public class User implements UserDetails {
 	@Override
 	@JsonIgnore
 	public boolean isAccountNonLocked() {
-		return false;
+		return true;
 	}
 
 	@Override
