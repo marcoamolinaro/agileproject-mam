@@ -13,9 +13,7 @@ import com.scmitltda.ppmtool.repositories.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-	
-	private static final long serialVersionUID = 1L;
-	
+		
 	@Autowired
 	private UserRepository userRepository;
 	
