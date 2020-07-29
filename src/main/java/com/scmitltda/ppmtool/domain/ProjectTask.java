@@ -15,6 +15,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -32,6 +33,7 @@ public class ProjectTask implements Serializable{
 	private String acceptanceCriteria;
 	private String status;
 	private Integer priority;
+	@JsonFormat(pattern = "yyy-mm-dd")
 	private Date dueDate;
 	
 	// ManyToOne Backlog
@@ -43,7 +45,9 @@ public class ProjectTask implements Serializable{
 	@Column(updatable = false)
 	private String projectIdentifier;
 	
+	@JsonFormat(pattern = "yyy-mm-dd")
 	private Date createdAt;
+	@JsonFormat(pattern = "yyy-mm-dd")
 	private Date updatedAt;
 	
 	@PrePersist
